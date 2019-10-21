@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>위도 경도 얻기</title>
+<style>
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+</style>
+</head>
+<body>
+<div id="locationField">
+  <input id="autocomplete" placeholder="주소를 입력하세요~" type="text" style="width:95%; height:30px">
+</div>
+<input class="field" id="lat" />
+<input class="field" id="lng" />
+<button id="wook">이동</button>
+<div id="google_map" style="width:500px;height:500px;"></div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyMURw5ImGMaVjNzUqr2j63eRvPoZo92E&libraries=places&callback=initAutocomplete" async defer></script>
+
+<script>
+var placeSearch, autocomplete;
+var we =0;
+var gyeong=0;
+var temp1=0;
+var temp2=0;
+function initAutocomplete() {
+  autocomplete = new google.maps.places.Autocomplete(
+                                      (document.getElementById('autocomplete')),{types: ['geocode']});
+  autocomplete.addListener('place_changed', fillInAddress);
+}
+function fillInAddress() {
+  var place = autocomplete.getPlace();
+    document.getElementById("lat").value=place.geometry.location.lat();
+    document.getElementById("lng").value=place.geometry.location.lng();
+    temp1=place.geometry.location.lat();
+    temp2=place.geometry.location.lng();
+}
+
+var x = document.getElementById("demo");
+function init()
+{
+   window.navigator.geolocation.getCurrentPosition(current_position);
+}
+ 
+function current_position(position)
+{   /* 구글맵 객체생성자 ( 위도,경도 ) */
+	//we=place.geometry.location.lat();
+	//gyeong=place.geometry.location.lng();
+    var latlng = new google.maps.LatLng(37.499556, 127.029314);
+   
+/* 지도가 보이는 형태 */
+    var map_options = {   
+        center:latlng,zoom:14,   // 0~21 까지 클수룩 자세하게 보임
+        mapTypeId:google.maps.MapTypeId.ROADMAP,
+        mapTypeControl:false,
+        navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
+    }
+    
+    /* 지도보이기 */
+    var map = new google.maps.Map(document.getElementById("google_map"), map_options);
+    
+    var marker = new google.maps.Marker({position:latlng,map:map,title:"You are here!"});
+}
+document.getElementById("wook").onclick=function(){
+	 /* 구글맵 객체생성자 ( 위도,경도 ) */
+	we=temp1;
+	gyeong=temp2;
+    var latlng = new google.maps.LatLng(we, gyeong);
+   
+/* 지도가 보이는 형태 */
+    var map_options = {   
+        center:latlng,zoom:14,   // 0~21 까지 클수룩 자세하게 보임
+        mapTypeId:google.maps.MapTypeId.ROADMAP,
+        mapTypeControl:false,
+        navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
+    }
+    
+    /* 지도보이기 */
+    var map = new google.maps.Map(document.getElementById("google_map"), map_options);
+    
+    var marker = new google.maps.Marker({position:latlng,map:map,title:"You are here!"});
+}
+window.addEventListener("load", init);
+</script>
+
+
+
+
+<br>
+<button class="accordion">Geolocation API 설명보기</button>
+<div class="panel">
+  <h4>1. 지도가 보이는 형태 설정 </h4> 
+  <img src="images/chansik1.jpg">
+<h4>2. 지도 생성와 마커 생성</h4>
+   <img src="images/chansik2.jpg">
+<h4>3. 현재 위치의 위도, 경도를 얻어서 지도에 표시 (초기 위치를 비트캠프로 설정)</h4>
+<img src="images/chansik3.jpg">
+<h4>4. 주소를 입력하면  구글 map API를 이용해서 해당 주소의 위도 경도를 얻는다.</h4>
+<img src="images/chansik4.jpg">
+<h4>5. 얻은 위도와 경도를 구글 map에 표시</h4>
+<img src="images/chansik5.jpg">
+</div>
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

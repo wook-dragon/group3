@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+  <script>
+ var we = 37.499556;
+ var gyeong = 127.029314;
+  function initialize() {
+   var myLatlng = new google.maps.LatLng(we, gyeong);
+   var mapOptions = {
+        zoom: 17,
+        center: myLatlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+   }
+   var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+   var marker = new google.maps.Marker({
+             position: myLatlng,
+             map: map,
+             title: "비트캠프 강남센터"
+});
+  }
+  
+  
+  
+  var infowindow = new google.maps.InfoWindow(
+          {
+           content: "<h1>비트캠프 강남센터</h1>",
+           maxWidth: 300
+          }
+);
+
+google.maps.event.addListener(marker, 'click', function() {
+infowindow.open(map, marker);
+});
+
+
+
+
+ </script>
+  <style>
+
+
+    /* Remove the navbar's default rounded borders and increase the bottom margin */ 
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+    
+    /* Remove the jumbotron's default bottom margin */ 
+     .jumbotron {
+      margin-bottom: 0;
+    }
+   
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+
+#group3 {
+    margin-top: 10%;
+}
+
+span { 
+  color :#424242;
+  font-size: 1.2vw;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+    
+  </style>
+  <script>
+	var span1;
+	window.onload = function() {
+	if (typeof (Storage) != undefined) { // 웹스토리지를 제공한다는 의미.
+		span1 = document.getElementById("display1");
+		var counter2 = localStorage.getItem('counter2');
+		if (counter2 == null) {
+			localStorage.setItem('counter2', 1);
+			span1.innerHTML = "This is your first visit";
+		} else {
+			// 방문횟수 증가
+			counter2++;
+			localStorage.setItem('counter2', counter2);
+			span1.innerHTML = "Your "+counter2  +  "times visits";
+		}
+	}
+	}
+	</script>
+</head>
+<body onload="initialize()">
+
+<div class="jumbotron">
+  <div class="container text-center" >
+  	<a href="#">
+      <img src="images/logo.png" class=" person" alt="Random Name" width="13%">
+</a>
+  </div>
+</div>
+
+<nav class="navbar navbar-inverse">  <!--navbar-default : white / .navbar-inverse : black -->
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand"><span id="display1"
+	  style="color: red; font-size: 0.8em; color: lightgray"></span></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+			  <li><a href="Group3.html">HOME</a></li>
+			  <li><a href="#member">INTRODUCE</a></li>
+			  <li><a href="#motto">MY MOTTO</a></li>
+			  <li><a href="Drag.html">GAME</a></li>
+			          <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">LINK
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="http://192.168.0.69:8080/Homework/MyHomepage2.html">Wook-D</a></li>
+            <li><a href="http://192.168.0.72:8090/Inyoung/Inyoung_notemp.html">KATIE</a></li>
+            <li><a href="http://192.168.0.56:8090/WebClient/mypage/scarlett.html">Scarlett</a></li> 
+            <li><a href="http://192.168.0.65:8090/WebClient/Startbootstrap-resume-gh-pages/yangchansik.html">YANG</a></li>
+            <li><a href="http://192.168.0.91:8090/Webclient_javascript/myPage.html">COLIN</a></li>
+            <li><a href="http://192.168.0.13:8090/WebClient_JavaScript/leehayeon.html">YEONY</a></li> 
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- Container (The Band Section) -->
+<div class="container text-center">
+        <h3 id="member">BIT STORY</h3>
+        <p><em><br>
+  		  우리의 코딩 여행은 아직 끝나지 않았다<br>
+                  각자 비전공자의 운명을 거부하고 떠난 6인의 코딩 모험.<br>
+                  비트캠프와 임경균강사님과 같이 코딩 세상에 눈을 뜨게 된다.
+    </em></p>
+        <br>
+
+
+ 
+          
+        <div id="group3" class="row">
+
+            <div class="col-sm-4">
+                <span class="text-center"><strong>Lee, Yongwook</strong></span><br>
+                <span class="text-center">Wook-D</span><br><br>
+                <a href="#demo2" data-toggle="collapse">
+                  <img src="images/woody.jpg" class=" person" alt="Random Name" width="255" height="255">
+                </a>
+                <div id="demo2" class="collapse">
+                <p><em>컴퓨터 게임을 좋아하지만, 현재는 많이 못하고 있다.
+		      요즘에는 웹 개발에 빠져있다.
+                      또한 영화를 매우 좋아해서 영화관에서 일한 경험이 있고,자주 영화관에 가기도 한다.
+                      다른 사람들을 잘 이해해주고 포용력이 많은 성격이다.</em></p>
+                </div>
+              </div>
+
+          <div class="col-sm-4">
+            <span class="text-center"><strong>Kim, Sooyeon</strong></span><br>
+            <span class="text-center">Scarlett</span><br><br>
+            <a href="#demo" data-toggle="collapse">
+              <img src="images/jessie.png" class=" person" alt="Random Name" width="255" height="255">
+            </a>
+            <div id="demo" class="collapse">
+            <p><em>요리하는 것을 좋아한다. 또한 추리소설과 자기개발 서적 읽는 것을 좋아한다.
+                        와인 관련한 일 경험이 있어서 와인을 좋아한다.
+                        따뜻하고 정열적이고 활기에 넘치며 재능이 많고 상상력이 풍부하다. 
+			통찰력과 창의력이 요구되지 않는 일에는 흥미를 느끼지 못하고 열정을 불러일으키지 못한다.</em></p>   
+            </div>
+          </div>
+
+
+          
+
+          <div class="col-sm-4">
+            <span class="text-center"><strong>Bae, Inyoung</strong></span><br> 
+            <span class="text-center">Katie</span><br><br>               
+            <a href="#demo3" data-toggle="collapse">
+              <img src="images/buzz.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
+            </a>
+            <div id="demo3" class="collapse">
+                 <p><em>주로 시끄러운 분위기 보다는 조용한 분위기를 좋아한다. 매사에 성실한 편이고 계획적인것을 선호한다.
+                 	좋아하는 것은 맛있는 디저트 먹기, 인디음악듣기 등이 있다. 10년동안 다른 분야에서 일하다 새롭게 개발을 공부하면서 난항에 빠져있다.
+                 	도전을 두려워하는 성격이지만, 마음먹은만큼 최선을 다하는 중이다.</em></p>   
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="group3" class="container text-center" style="margin-bottom: 3%">
+            <div class="row">
+              <div class="col-sm-4">
+                <span class="text-center"><strong>Lee, Hayeon</strong></span><br>
+                <span class="text-center">Yeony</span><br><br>
+
+                <a href="#demo4" data-toggle="collapse">
+                  <img src="images/hamm1.jpg" class=" person" alt="Random Name" width="255" height="255">
+                </a>
+                <div id="demo4" class="collapse">
+                  <p><em>웹 개발자가 되는 것 외에도 나는 대부분의 시간을 가족, 친구들과 보내는 것을 즐긴다. 
+			친한 친구와 카페에서 수다를 떨거나 혼자 뜨개질, 프랑스자수 하는 걸 즐긴다. 
+			책을 좋아하지는 않지만 1년에 5권씩은 읽으려고 노력한다. 주로 일본소설책을 읽는다.
+			아보카도,초밥,과자를 좋아한다.
+			타인을 잘 배려하고, 공감 능력이 뛰어난 성격이다.</em></p>
+                </div>
+              </div>
+    
+              <div class="col-sm-4">
+                <span class="text-center"><strong>Kim, Jinsung</strong></span><br>
+                <span class="text-center">Colin</span><br><br>
+                <a href="#demo5" data-toggle="collapse">
+                  <img src="images/mr.-potato.jpg" class=" person" alt="Random Name" width="255" height="255">
+                </a>
+                <div id="demo5" class="collapse">
+              <p><em>주말에 시간이 나면 주로 탁구를 친다.
+                      호주에 약 10년 동안 거주한 경험이 있어서 영어를 유창하게 구사한다.
+                      정열적이고 활기에 넘치며 재능이 많고 상상력이 풍부하다.  
+                      또한 온정적이고 창의적이며 항상 새로운 가능성을 찾고 시도하는 성격이다.</em></p>
+                </div>
+              </div>
+              
+    
+              <div class="col-sm-4">
+                <span class="text-center"><strong>Yang, Chansik</strong></span><br>
+                <span class="text-center">Yang</span><br><br>
+                <a href="#demo6" data-toggle="collapse">
+                  <img src="images/alien.JPG" class="img-circle person" alt="Random Name" width="255" height="255">
+                </a>
+                <div id="demo6" class="collapse">
+                <p><em>집에서 쉬는 것을 좋아한다.
+		      취미는 영화 감상이며, 특히 느와르, 범죄 영화를 좋아한다.
+		      착한 성격이며, 다른 사람들의 부탁을 잘 거절하지 못한다.</em></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+          
+          
+            <h3 class="text-center" id="motto">MY MOTTO</h3>  
+  <ul class="nav nav-tabs">
+    <li><a data-toggle="tab" href="#home" id="wook" onclick="setLocation(this)">WOOK-D</a></li>
+    <li><a data-toggle="tab" href="#menu1" id="katie" onclick="setLocation(this)">KATIE</a></li>
+    <li><a data-toggle="tab" href="#menu2" id="scarlett" onclick="setLocation(this)">SCARLETT</a></li>
+    <li><a data-toggle="tab" href="#menu3" id="yang" onclick="setLocation(this)">YANG</a></li>
+    <li><a data-toggle="tab" href="#menu4" id="colin" onclick="setLocation(this)">COLIN</a></li>
+    <li><a data-toggle="tab" href="#menu5" id="yeony" onclick="setLocation(this)">YEONY</a></li>
+  </ul>
+
+  <div class="tab-content" style="text-align:center;">
+    <div class="tab-pane fade in active">
+      <h2>Bitcamp's location</h2>
+      <p>Click member name!</p>
+    </div>
+    <div id="home" class="tab-pane fade">
+      <h2>WOOK-D</h2>
+      <p>NO Pain, NO Gain</p>
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <h2>KATIE</h2>
+      <p>Time is Gold</p>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <h2>SCARLETT</h2>
+      <p>순간을 사랑하라. 그러면 그 순간의 에너지가 모든 경계를 넘어 퍼져나갈 것이다</p>
+    </div>
+    <div id="menu3" class="tab-pane fade">
+      <h2>YANG</h2>
+      <p>looking at each other with astonishment</p>
+    </div>
+    <div id="menu4" class="tab-pane fade">
+      <h2>COLIN</h2>
+      <p>사랑은 LOVE</p>
+    </div>
+    <div id="menu5" class="tab-pane fade">
+      <h2>YEONY</h2>
+      <p>좋은게 좋은거다</p>
+    </div>
+     
+   </div>
+<!-- Image of location/map -->
+
+ <div id="map_canvas"style="width:100%; height:300px;">
+        <img src="map.jpg" class="img-responsive" style="width:100%">
+ </div>
+<script>
+
+
+function initialize2(we, gyeong) {
+   var myLatlng = new google.maps.LatLng(we, gyeong);
+      var mapOptions = {
+           zoom: 17,
+           center: myLatlng,
+           mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
+      var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+      var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                title: "비트캠프 강남센터"
+   });
+      
+      var infowindow = new google.maps.InfoWindow(
+                {
+                 content: "<h1>비트캠프 강남센터</h1>",
+                 maxWidth: 300
+                }
+      );
+      
+      google.maps.event.addListener(marker, 'click', function() {
+         infowindow.open(map, marker);
+         });
+   
+}
+
+
+function setLocation(this2) {
+   if(this2.id == "wook") {
+      initialize2(37.54206999999999, 127.19814339999994);
+   }else if(this2.id == "katie") {
+      initialize2(37.3032495, 127.07965149999995);
+   }else if(this2.id == "scarlett") {
+      initialize2(37.4851331, 127.1238462);
+   }else if(this2.id == "yang") {
+      initialize2(37.4723308, 126.86337159999994);
+   }else if(this2.id == "colin") {
+      initialize2(37.4999072, 127.0373932);
+   }else if(this2.id == "yeony") {
+      initialize2(37.53240049999999, 127.07158090000007);
+   }
+   
+   
+}
+</script>          
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyMURw5ImGMaVjNzUqr2j63eRvPoZo92E&callback=initMap"  type="text/javascript"></script>          
+          
+          
+          
+          
+          
+          
+      
+
+<footer class="container-fluid text-center">
+  <a class="up-arrow" href="#" data-toggle="tooltip" title="TO TOP">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a><br><br>
+  <p>BITSTORY by BITCAMP <br><a href="https://bitcamp.co.kr" data-toggle="tooltip" title="Visit BITCAMP">www.bitcamp.co.kr</a></p>
+
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>WebStorage</title>
+<script>
+   var span1;
+   var span2;
+   window.onload = function() {
+      //웹스토리지 지원여부 판단
+      console.log(typeof (Storage));
+      if (typeof (Storage) != undefined) { // 웹스토리지를 제공한다는 의미.
+         span1 = document.getElementById("display1");
+         span1.innerHTML = "웹 스토리지를 지원하는 웹 브라우저 입니다.";
+         console.log("자료형 : %s, localStorage : %s", typeof (localStorage),
+               localStorage);
+         var counter1 = localStorage.getItem('counter1');
+         console.log(counter1);
+         if (counter1 == null) {
+            localStorage.setItem('counter1', 1);
+            span1.innerHTML = "처음 방문 하셨군요! 환영합니다^^";
+         } else {
+            // 방문횟수 증가
+            counter1++;
+            localStorage.setItem('counter1', counter1); //저장
+            span1.innerHTML = counter1 + "번째 방문 하셨군요.";
+         }
+      }
+   
+	console.log(typeof (Storage));
+	if (typeof (Storage) != undefined) { // 웹스토리지를 제공한다는 의미.
+		span2 = document.getElementById("display2");
+		span2.innerHTML = "웹 스토리지를 지원하는 웹 브라우저 입니다.";
+
+		console.log("자료형 : %s, localStorage : %s", typeof (sessionStorage),
+				sessionStorage);
+		var counter2 = sessionStorage.getItem('counter2');
+		console.log(counter2);
+		if (counter2 == null) {
+			sessionStorage.setItem('counter2', 1);
+			span2.innerHTML = "처음 방문 하셨군요ㅎㅇ";
+		} else {
+			// 방문횟수 증가
+			counter2++;
+			sessionStorage.setItem('counter2', counter2);
+			span2.innerHTML = counter2 + "번째 방문 하셨군요";
+		}
+	}
+   function removeKey1() {
+      span1.innerHTML = "방문횟수가 초기화되었습니다.";
+      localStorage.removeItem('counter1'); //삭제
+   };
+	function removeKey2() {
+		span2.innerHTML = "방문횟수가 초기화되었어요ㅂㅂ";
+		sessionStorage.removeItem('counter2');
+	};
+   };
+</script>
+<style>
+.accordion {
+   background-color: #eee;
+   color: #444;
+   cursor: pointer;
+   padding: 18px;
+   width: 100%;
+   border: none;
+   text-align: left;
+   outline: none;
+   font-size: 15px;
+   transition: 0.4s;
+}
+
+.active, .accordion:hover {
+   background-color: #ccc;
+}
+
+.panel {
+   padding: 0 18px;
+   background-color: white;
+   max-height: 0;
+   overflow: hidden;
+   transition: max-height 0.2s ease-out;
+}
+</style>
+</head>
+<body>
+   <fieldset>
+      <legend>웹 스토리지를 이용한 방문자 카운팅(로컬 스토리지)</legend>
+      <span id="display1"
+         style="color: red; font-size: 1.5em; font-weight: bold"></span>
+      <button onclick="removeKey1()">로컬 스토리지 삭제</button>
+
+   </fieldset>
+	<fieldset>
+		<legend>웹 스토리지를 이용한 방문자 카운팅(세션 스토리지)</legend>
+		<span id="display2"
+			style="color: blue; font-size: 1.5em; font-weight: bold"></span>
+		<button onclick="removeKey2()">세션 스토리지 삭제</button>
+
+	</fieldset>
+   <h4>WebStorage- Local Storage</h4>
+
+   <button class="accordion">설명을 보시려면 Click!</button>
+   <div class="panel">
+      <p>'Local Storage'에 대한 설명</p>
+      <ul style="list-style-type: none;">
+         <li>- 데이터 저장 시간에 제한이 없어 영구적으로 데이터를 보관이 가능하다.</li>
+         <li>- 도메인마다 별도의 저장영역을 생성한다.</li>
+         <li>- 다른 도메인끼리의 로컬 스토리지에는 접근이 불가능하다. (같은 도메인이라면 접근 가능)</li>
+         <li>- 웹 브라우저마다 별도의 로컬 스토리지를 가진다. (스토리지의 경로(Path)도 제각각임)</li>
+      </ul>
+      
+            
+         <p>주요함수에 대한 설명</p>
+    <img src="images/localstorage.jpg" width="800px" height="500px">
+      
+   </div>
+
+   <script>
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+         acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+               panel.style.maxHeight = null;
+            } else {
+               panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+         });
+      }
+   </script>
+
+</body>
+</html>
